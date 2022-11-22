@@ -1,0 +1,452 @@
+<html>
+
+<head>
+    <title>BBI</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/assets/images/bbi_logo.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/app.css">
+    <!-- Bootstrap CDN JS Links -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="assets/js/app.js"></script>
+
+</head>
+
+<body>
+    <div class="tabs-section text-white" style="height: 100%;">
+        <div class="mx-5" style="height: 100%; overflow: hidden;">
+            <div class="row" style="height: 100%; overflow: auto;">
+                <div class="col-sm-5 col-lg-3">
+                    <div class="logo mb-3">
+                        <span>
+                            <h2>LOGO</h2>
+                        </span>
+                    </div>
+                    <ul class="nav nav-tabs flex-column mb-3" style="height: 100%;">
+                        <li class="nav-item">
+                            <a class="nav-link active show" data-toggle="tab" href="#tab-1">Clients</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#tab-2">Accounts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#tab-3">Error & logs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#tab-4">Charts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#tab-5">Settings</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-7 col-lg-9">
+                    <div class="tab-content">
+                        <div class="tab-pane active show" id="tab-1">
+                            <div>
+                                <button class="btn mb-4" data-toggle="modal" data-target="#clientModal">New
+                                    client</button>
+                            </div>
+                            <div class="row">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Client name</th>
+                                            <th>Lifetime export</th>
+                                            <th>Last daily export</th>
+                                            <th>Validity</th>
+                                            <th>Accounts</th>
+                                            <th>Sector</th>
+                                            <th>Sub sector</th>
+                                            <th>Reset All</th>
+                                            <th>Remove All</th>
+                                            <th>Edit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% users.forEach(function(user) {%>
+                                            <tr>
+                                                <td id = "user_name"><%= user.user_name %></td>
+                                                <td><%= user.lifetime_export %></td>
+                                                <td><%= user.lastdaily_export %></td>
+                                                <td><span style="color:chartreuse"><%= user.validity %></span></td>
+                                                <td><span>G:<%= user.g_account %></span><br>
+                                                    <span>FB:<%= user.fb_account %></span></td>
+                                                <td><%= user.sector %></td>
+                                                <td><%= user.subsector %></td>
+                                                <input type="hidden" id="client_notes" value="<%= user.clientnotes %>">
+                                                <td>
+                                                    <button class="btn btn_reset">Reset</button>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn_remove" id="<%= user.id %>">Remove</button>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn_edit" data-toggle="modal" data-target="#editModal"  id="<%= user.id %>">Edit</button>
+                                                </td>
+                                            </tr>
+                                        <% });%>
+                                        <!-- <tr>
+                                            <td>Acme Co</td>
+                                            <td>15/08/22, 15:00</td>
+                                            <td>15/08/22, 4:00</td>
+                                            <td><span style="color:chartreuse">Valid</span></td>
+                                            <td>
+                                                <span>G:1,</span><br>
+                                                <span>FB:2</span>
+                                            </td>
+                                            <td>Cars</td>
+                                            <td>Luxury Cars</td>
+                                            <td>
+                                                <button class="btn btn_reset">Reset</button>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn_remove">Remove</button>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn_edit" data-toggle="modal" data-target="#editModal">Edit</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Acme Co</td>
+                                            <td>15/08/22, 15:00</td>
+                                            <td>15/08/22, 4:00</td>
+                                            <td><span style="color: red">ERROR></span></td>
+                                            <td>
+                                                <span>G:10,</span><br>
+                                                <span>FB:22</span>
+                                            </td>
+                                            <td>Cars</td>
+                                            <td>Luxury Cars</td>
+                                            <td>
+                                                <button class="btn btn_reset">Reset</button>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn_remove">Remove</button>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn_edit" data-toggle="modal" data-target="#editModal">Edit</button>
+                                            </td>
+                                        </tr> -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="modal fade" id="clientModal" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">New Client</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="client_name" class="col-form-label">Client
+                                                                Name</label>
+                                                            <input type="text" class="form-control" id="client_name">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="client_sector"
+                                                                class="col-form-label">Sector</label>
+                                                            <select class="form-control" id="main_sector">
+                                                                
+                                                            </select>
+                                                            <label for="client_sector"
+                                                                class="col-form-label mt-3">Sub Sector</label>
+                                                            <select class="form-control" id="sub_sector"></select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="client_notes" class="col-form-label">Client
+                                                                Notes</label>
+                                                            <textarea class="form-control" id="client_notes"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="col-form-label"><h5>Add new account</h5></label>
+                                                        </div>
+                                                        <a href class="btn btn-danger google" onclick="popup()"><span
+                                                                class="fa fa-google"></span>
+                                                            SignIn with Google</a>
+                                                        <br><br>
+                                                        <a href="#"
+                                                            class="waves-effect waves-light btn social facebook">
+                                                            <i class="fa fa-facebook"></i> Continue with Facebook
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn" id="save">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="editModal" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Edit Client</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="client_name" class="col-form-label">Client
+                                                                Name</label>
+                                                            <input type="text" class="form-control" id="client_name_edit">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="client_sector"
+                                                                class="col-form-label">Sector</label>
+                                                            <select class="form-control" id="main_sector_edit"></select>
+                                                            <select class="form-control mt-3" id="sub_sector_edit"></select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="client_notes" class="col-form-label">Client
+                                                                Notes</label>
+                                                            <textarea class="form-control" id="client_notes_edit"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div>
+                                                            <label class="col-form-label"><h5>Accounts:</h5></label>
+                                                            <div>
+                                                                <span>G-122-155-1574: Valid remove re-auth</span><br>
+                                                                <span>G-122-155-1574: Valid remove re-auth</span><br>
+                                                                <span>G-122-155-1574: Valid remove re-auth</span><br>
+                                                                <span>G-122-155-1574: Valid remove re-auth</span><br>
+                                                                <span>FB-12345678: Broken token remove re-auth</span><br>
+                                                            </div>
+                                                            <button class="btn mt-5 mb-1">Rmove all customer data</button>
+                                                            <button class="btn mb-1">Export all customer data</button>
+                                                            <button class="btn mb-1">Reset lifetime in all data</button>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-form-label"><h5>Add new account</h5></label>
+                                                        </div>
+                                                        <a href="#" class="btn btn-danger google"><span
+                                                                class="fa fa-google"></span>
+                                                            SignIn with Google</a>
+                                                        <br><br>
+                                                        <a href="#"
+                                                            class="waves-effect waves-light btn social facebook">
+                                                            <i class="fa fa-facebook"></i> Continue with Facebook
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn" id="update">Update</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab-2">
+                            <div class="row">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Account ID</th>
+                                            <th>Lifetime export</th>
+                                            <th>Last daily export</th>
+                                            <th>Validity</th>
+                                            <th>Client</th>
+                                            <th>Re import lifetime</th>
+                                            <th>Remove account</th>
+                                            <th>Reconnect</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>G-122-155-1574</td>
+                                            <td>15/08/22, 15:00</td>
+                                            <td>15/08/22, 04:00</td>
+                                            <td><span style="color:chartreuse">Valid</span></td>
+                                            <td>Acme co</td>
+                                            <td>
+                                                <button class="btn btn_reset">ReImport</button>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn_remove">Remove</button>
+                                            </td>
+                                            <td>
+                                                <a href="#" class="btn btn-danger google"><span
+                                                        class="fa fa-google"></span>
+                                                    SignIn with Google</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>FB-12345678</td>
+                                            <td>15/08/22, 15:00</td>
+                                            <td>15/08/22, 04:00</td>
+                                            <td><span style="color:red">ERROR></span></td>
+                                            <td>Lada cars</td>
+                                            <td>
+                                                <button class="btn btn_reset">ReImport</button>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn_remove">Remove</button>
+                                            </td>
+                                            <td>
+                                                <a href="#" class="waves-effect waves-light btn social facebook">
+                                                    <i class="fa fa-facebook"></i> Continue with Facebook
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab-3">
+                            <div class="row">
+                                <div class="col-7">
+                                    <div class="py-4">
+                                        <label>
+                                            <h2>System Errors</h2>
+                                        </label>
+                                        <div>
+                                            <span>All Valid</span>
+                                        </div>
+                                    </div>
+                                    <div class="py-4">
+                                        <label>
+                                            <h2>Account Errors</h2>
+                                        </label>
+                                        <div>
+                                            <span>FB-12345678-invalid token see more></span><br>
+                                            <span>FB-12345678-invalid token see more></span><br>
+                                            <span>FB-12345679-invalid token see more></span><br>
+                                            <span>FB-12345679-invalid token see more></span><br>
+                                            <span>FB-12345679-invalid token see more></span><br>
+                                        </div>
+                                    </div>
+                                    <div class="py-4">
+                                        <label>
+                                            <h2>Daily logs</h2>
+                                        </label>
+                                        <div class="row">
+                                            <input type="date" class="form-control col-4">
+                                            <div class="col-5">
+                                                <button class="btn">Download</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="py-4">
+                                        <label>
+                                            <h2>Last 1k logs</h2>
+                                        </label>
+                                        <div>
+                                            <!-- <textarea style="width: 700px; height: 1000px;"> -->
+                                            <span>[Fri Dec 16 01:46:23 2005][notice][FB-123456788] export
+                                                started;</span><br>
+                                            <span>[Fri Dec 16 01:46:23 2005][notice][FB-123456788] exported data is
+                                                valid;</span><br>
+                                            <span>[Fri Dec 16 01:46:23 2005][notice][FB-123456788] import
+                                                started;</span><br>
+                                            <span>[Fri Dec 16 01:46:23 2005][notice][FB-123456788] import ended after
+                                                0.00255;</span><br>
+                                            <span>[Fri Dec 16 01:46:23 2005][notice][FB-123456788] export
+                                                started;</span><br>
+                                            <span>[Fri Dec 16 01:46:23 2005][notice][FB-123456788] exported data is
+                                                valid;</span><br>
+                                            <span>[Fri Dec 16 01:46:23 2005][notice][FB-123456788] import
+                                                started;</span><br>
+                                            <span>[Fri Dec 16 01:46:23 2005][notice][FB-123456788] import ended after
+                                                0.00255;</span><br>
+                                            <span>[Fri Dec 16 01:46:23 2005][notice][FB-123456788] export
+                                                started;</span><br>
+                                            <span>[Fri Dec 16 01:46:23 2005][notice][FB-123456788] exported data is
+                                                valid;</span><br>
+                                            <span>[Fri Dec 16 01:46:23 2005][notice][FB-123456788] import
+                                                started;</span><br>
+                                            <span>[Fri Dec 16 01:46:23 2005][notice][FB-123456788] import ended after
+                                                0.00255;</span><br>
+                                            <span>[Fri Dec 16 01:46:23 2005][notice][FB-123456788] export
+                                                started;</span><br>
+                                            <span>[Fri Dec 16 01:46:23 2005][notice][FB-123456788] exported data is
+                                                valid;</span><br>
+                                            <span>[Fri Dec 16 01:46:23 2005][notice][FB-123456788] import
+                                                started;</span><br>
+                                            <span>[Fri Dec 16 01:46:23 2005][notice][FB-123456788] import ended after
+                                                0.00255;</span><br>
+                                            <!-- </textarea> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab-4">
+                            <h3>(external page-iframe)</h3>
+                        </div>
+                        <div class="tab-pane" id="tab-5">
+                            <form>
+                                <div class="row">
+                                    <div class="col-5">
+                                        <div class="form-group">
+                                            <label for="setting1" class="col-form-label">Setting1
+                                            </label>
+                                            <input type="text" class="form-control" id="setting1">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="setting2" class="col-form-label">Setting2
+                                            </label>
+                                            <input type="text" class="form-control" id="setting2">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="setting3" class="col-form-label">Setting3
+                                            </label>
+                                            <input type="text" class="form-control" id="setting3">
+                                        </div>
+                                    </div>
+                                    <div class="col-5">
+                                        <div class="form-group">
+                                            <div><label class="col-form-label">
+                                                    <h5>FB Business Account</h5>
+                                                </label></div>
+                                            <a href="#" class="waves-effect waves-light btn social facebook">
+                                                <i class="fa fa-facebook"></i> Continue with Facebook
+                                            </a>
+                                            <div><span style="color:chartreuse">Connection is Valid</span></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div><label class="col-form-label">
+                                                    <h5>Google Cloud Account</h5>
+                                                </label></div>
+                                            <input type="text" class="form-control col-5" id="key"
+                                                placeholder="API Key">
+                                            <input type="text" class="form-control col-5 mt-2" id="secret"
+                                                placeholder="API Secret">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <button class="btn">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

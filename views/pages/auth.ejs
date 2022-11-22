@@ -1,0 +1,170 @@
+<!-- views/auth.ejs -->
+<!doctype html>
+<html>
+
+<head>
+    <title>Google SignIn</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- load bulma css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- load fontawesome -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="assets/js/app.js"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        body {
+            padding-top: 70px;
+        }
+
+        .facebook {
+            background-color: #3b5998 !important;
+            color: #fff !important;
+        }
+
+        .fa-lock {
+            color: #3b5998 !important;
+        }
+
+        .fa-facebook-f:before,
+        .fa-facebook:before {
+            content: "\f09a";
+        }
+
+        .modal-box {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .show-modal {
+            color: #fff;
+            background: linear-gradient(to right, #33a3ff, #0675cf, #49a6fd);
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: capitalize;
+            padding: 10px 15px;
+            margin: 200px auto 0;
+            border: none;
+            outline: none;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            display: block;
+            transition: all 0.3s ease 0s;
+        }
+
+        .show-modal:hover,
+        .show-modal:focus {
+            color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+            outline: none;
+        }
+
+        .modal-dialog {
+            width: 400px;
+            margin: 170px auto 0;
+        }
+
+        .modal-dialog {
+            transform: scale(0.5);
+        }
+
+        .modal-dialog {
+            transform: scale(1);
+        }
+
+        .modal-dialog .modal-content {
+            text-align: center;
+            border: none;
+        }
+
+        .modal-content .close {
+            color: #fff;
+            background: linear-gradient(to right, #33a3ff, #0675cf, #4cd5ff);
+            font-size: 25px;
+            font-weight: 400;
+            text-shadow: none;
+            line-height: 27px;
+            height: 25px;
+            width: 25px;
+            border-radius: 50%;
+            overflow: hidden;
+            opacity: 1;
+            position: absolute;
+            left: auto;
+            right: 8px;
+            top: 8px;
+            z-index: 1;
+            transition: all 0.3s;
+        }
+
+
+        .modal-body {
+            padding: 60px 40px 40px !important;
+        }
+
+        .modal-body .title {
+            color: #026fd4;
+            font-size: 33px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin: 0 0 30px;
+        }
+
+        @media only screen and (max-width: 480px) {
+            .modal-dialog {
+                width: 95% !important;
+            }
+
+            .modal-content .modal-body {
+                padding: 60px 20px 40px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="modal-box">
+                    <!-- Button trigger modal -->
+                    <div class="text-center">
+                        <h1 style = "color: #0675cf;"><span class="fa fa-lock"></span> Social Authentication</h1>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-lg show-modal" data-toggle="modal"
+                        data-target="#myModal">
+                        Login Form
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content clearfix">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">×</span></button>
+                                <div class="modal-body">
+                                    <h2 class="title">Login with:</h2>
+                                    <a href class="btn btn-danger" onclick="popup()"><span class="fa fa-google"></span>
+                                        SignIn with Google</a>
+                                    <br><br>
+                                    <a href="/auth/facebook" class="waves-effect waves-light btn social facebook">
+                                        <i class="fa fa-facebook"></i> Continue with Facebook
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
