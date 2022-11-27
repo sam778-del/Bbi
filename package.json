@@ -23,10 +23,12 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
+    "serve": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "sequelize-cli": "^6.5.2"
   },
   "license": "ISC"
 }

@@ -21,12 +21,17 @@ module.exports = (sequelize, Sequelize) => {
 		},
 		client_id: {
 			type: Sequelize.INTEGER,
-		}
+			references: {
+                model: 'user',
+                key: 'id'
+            }
+		},
 	});
 
-    // Account.belongsTo(User, {
-    //     foreignKey: "client_id",
-    //     targetKey: "id",
-    //   });
+	Account.associate = (models) => {
+		Account.belongsTo(models.user, {
+			foreignKey: "id",
+		  });
+	}
 	return Account;
 };

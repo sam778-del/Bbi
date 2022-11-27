@@ -1,0 +1,73 @@
+<%- include('../header'); -%>
+<div class="tabs-section text-white" style="height: 100%;">
+    <div class="mx-5" style="height: 100%; overflow: hidden;">
+        <div class="row" style="height: 100%; overflow: auto;">
+            <div class="col-sm-5 col-lg-3">
+                <div class="logo mb-3">
+                    <span>
+                        <h2>LOGO</h2>
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-7 col-lg-9">
+                <form>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="client_name" class="col-form-label">Client
+                                    Name</label>
+                                <input type="text" class="form-control" id="client_name">
+                                <input type="hidden" class="form-control" id="access_token" />
+                                <input type="hidden" class="form-control" id="provider" />
+                                <input type="hidden" class="form-control" id="account_id" />
+                                <input type="hidden" class="form-control" id="refresh_token" />
+                            </div>
+                            <div class="form-group">
+                                <label for="client_sector"
+                                    class="col-form-label">Sector</label>
+                                <select class="form-control" id="main_sector">
+                                    <option value="Semovita">Semovita</option>
+                                </select>
+                                <label for="client_sector"
+                                    class="col-form-label mt-3">Sub Sector</label>
+                                <select class="form-control" id="sub_sector">
+                                    <option value="Semovita">Semovita</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="fbAccount">
+                                <label for="fb_account_id" class="col-form-label">Facebook Ad Account ID</label>
+                                <input type="text" class="form-control" id="fb_account_id" required>
+                            </div>
+
+                            <div class="form-group" id="gAccount">
+                                <label for="google_customer_id" class="col-form-label">Google Customer ID</label>
+                                <input type="text" class="form-control" id="google_customer_id" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="client_notes" class="col-form-label">Client
+                                    Notes</label>
+                                <textarea class="form-control" id="client_notes"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-form-label"><h5>Add new account</h5></label>
+                            </div>
+                            <a href class="btn btn-danger google" onclick="popup()"><span
+                                    class="fa fa-google"></span>
+                                SignIn with Google</a>
+                            <br><br>
+                            <a href="#" onclick="loginFacebook()"
+                                class="waves-effect waves-light btn social facebook">
+                                <i class="fa fa-facebook"></i> Continue with Facebook
+                            </a>
+                        </div>
+                    </div>
+                    <button type="button" class="btn" id="save">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../footer'); -%>

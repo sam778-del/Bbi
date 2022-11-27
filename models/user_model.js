@@ -19,11 +19,17 @@ module.exports = (sequelize, Sequelize) => {
 		validity: {
 			type: Sequelize.STRING,
 		},
+		provider: {
+			type: Sequelize.STRING,
+		},
+		refresh_token: {
+			type: Sequelize.TEXT('long'),
+		},
 		g_account: {
-			type: Sequelize.INTEGER,
+			type: Sequelize.TEXT('long'),
 		},
 		fb_account: {
-			type: Sequelize.INTEGER,
+			type: Sequelize.TEXT('long'),
 		},
 		sector: {
 			type: Sequelize.STRING,
@@ -36,10 +42,11 @@ module.exports = (sequelize, Sequelize) => {
 		}
 	});
 
-	// User.hasOne(Account, {
-	// 	foreignKey: "client_id",
-	// 	targetKey: "id",
-	// })
-
+	User.associate = (models) => {
+		User.hasOne(models.account, {
+			foreignKey: "client_id",
+			targetKey: "id",
+		})
+	}
 	return User;
 };
